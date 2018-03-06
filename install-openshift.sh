@@ -80,7 +80,7 @@ memory=$(cat /proc/meminfo | grep MemTotal | sed "s/MemTotal:[ ]*\([0-9]*\) kB/\
 if [ "$memory" -lt "4194304" ]; then
 	export METRICS="False"
 fi
-if [ "$memory" -lt "8388608" ]; then
+if [ "$memory" -lt "8000000" ]; then
 	export LOGGING="False"
 fi
 
