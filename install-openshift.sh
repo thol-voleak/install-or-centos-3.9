@@ -6,7 +6,7 @@ echo "------------>1.process export variable------------>"
 export DOMAIN=${DOMAIN:="192.168.106.2"}
 export USERNAME=${USERNAME:="voleak"}
 export PASSWORD=${PASSWORD:=voleak}
-export VERSION=${VERSION:="v3.7.1"}
+export VERSION=${VERSION:="v3.6.0"}
 
 export SCRIPT_REPO=${SCRIPT_REPO:="https://raw.githubusercontent.com/thol-voleak/openshift-origin-centos-installation/master"}
 
@@ -38,7 +38,7 @@ which ansible || pip install -Iv ansible
 
 [ ! -d openshift-ansible ] && git clone https://github.com/openshift/openshift-ansible.git
 
-cd openshift-ansible && git fetch && git checkout release-3.7 && cd ..
+cd openshift-ansible && git fetch && git checkout release-3.6 && cd ..
 
 echo "------------>5.process set /etc/hosts------------>"
 cat <<EOD > /etc/hosts
