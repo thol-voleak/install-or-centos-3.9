@@ -74,15 +74,15 @@ fi
 
 
 echo "------------>9.process enable/disable METRICS/LOGGING------------>"
-export METRICS="True"
-export LOGGING="True"
-memory=$(cat /proc/meminfo | grep MemTotal | sed "s/MemTotal:[ ]*\([0-9]*\) kB/\1/")
-if [ "$memory" -lt "4194304" ]; then
-	export METRICS="False"
-fi
-if [ "$memory" -lt "8000000" ]; then
-	export LOGGING="False"
-fi
+#export METRICS="True"
+#export LOGGING="True"
+#memory=$(cat /proc/meminfo | grep MemTotal | sed "s/MemTotal:[ ]*\([0-9]*\) kB/\1/")
+#if [ "$memory" -lt "4194304" ]; then
+#	export METRICS="False"
+#fi
+#if [ "$memory" -lt "8000000" ]; then
+#	export LOGGING="False"
+#fi
 
 echo "------------>10.process ansible playbook------------>"
 curl -o inventory.download $SCRIPT_REPO/inventory.ini
