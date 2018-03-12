@@ -38,7 +38,7 @@ which ansible || pip install -Iv ansible
 
 [ ! -d openshift-ansible ] && git clone https://github.com/openshift/openshift-ansible.git
 
-cd openshift-ansible && git fetch && git checkout release-3.6 && cd ..
+cd openshift-ansible && git fetch && git checkout release-3.7 && cd ..
 
 echo "------------>5.process set /etc/hosts------------>"
 cat <<EOD > /etc/hosts
