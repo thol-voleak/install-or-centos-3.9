@@ -3,9 +3,9 @@
 ## see: https://www.youtube.com/watch?v=-OOnGK-XeVY
 
 echo "------------>1.process export variable------------>"
-export DOMAIN=${DOMAIN:="192.168.106.2"}
-export USERNAME=${USERNAME:="voleak"}
-export PASSWORD=${PASSWORD:=voleak}
+export DOMAIN=master-ocp.truemoney.com.kh
+export USERNAME=admin
+export PASSWORD=admin@pwd
 export VERSION=${VERSION:="v3.7.1"}
 
 export SCRIPT_REPO=${SCRIPT_REPO:="https://raw.githubusercontent.com/thol-voleak/openshift-origin-centos-installation/master"}
