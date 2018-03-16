@@ -51,7 +51,7 @@ if [ -z $DISK ]; then
 	VG=docker-vg
 	EOD
 	systemctl stop docker
-	rm -rf /var/lib/docker/*
+	rm -rf /var/lib/docker/
 	docker-storage-setup
 fi
 systemctl restart docker
