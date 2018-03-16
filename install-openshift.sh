@@ -6,7 +6,7 @@ echo "------------>1.process export variable------------>"
 export DOMAIN=master-ocp.truemoney.com.kh
 export USERNAME=admin
 export PASSWORD=admin@pwd
-export VERSION=${VERSION:="v3.7.1"}
+export VERSION=${VERSION:="v3.6"}
 
 export SCRIPT_REPO=${SCRIPT_REPO:="https://raw.githubusercontent.com/thol-voleak/openshift-origin-centos-installation/master"}
 
