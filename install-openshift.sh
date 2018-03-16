@@ -46,19 +46,18 @@ ${IP}		$(hostname) console console.${DOMAIN}
 EOD
 
 
-cp /etc/sysconfig/docker-storage-setup /etc/sysconfig/docker-storage-setup.bk
-echo DEVS=/dev/vdc > /etc/sysconfig/docker-storage-setup
-echo VG=docker-vg >> /etc/sysconfig/docker-storage-setup
-systemctl stop docker
-rm -rf /var/lib/docker/
-docker-storage-setup
-
-systemctl restart docker
-systemctl enable docker
+#cp /etc/sysconfig/docker-storage-setup /etc/sysconfig/docker-storage-setup.bk
+#echo DEVS=/dev/vdc > /etc/sysconfig/docker-storage-setup
+#echo VG=docker-vg >> /etc/sysconfig/docker-storage-setup
+#systemctl stop docker
+#rm -rf /var/lib/docker/
+#docker-storage-setup
+#systemctl restart docker
+#systemctl enable docker
  
 
 export METRICS="True"
-export LOGGING="True"
+export LOGGING="False"
 memory=$(cat /proc/meminfo | grep MemTotal | sed "s/MemTotal:[ ]*\([0-9]*\) kB/\1/")
 if [ "$memory" -lt "4194304" ]; then
 	export METRICS="False"
