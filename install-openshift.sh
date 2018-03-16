@@ -37,7 +37,7 @@ which ansible || pip install -Iv ansible
 
 [ ! -d openshift-ansible ] && git clone https://github.com/openshift/openshift-ansible.git
 
-cd openshift-ansible && git fetch && git checkout release-3.7 && cd ..
+cd openshift-ansible && git fetch && git checkout release-3.6 && cd ..
 
 cat <<EOD > /etc/hosts
 127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4 
