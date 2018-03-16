@@ -45,15 +45,14 @@ cat <<EOD > /etc/hosts
 ${IP}		$(hostname) console console.${DOMAIN} 
 EOD
 
-if [ -z $DISK ]; then 
-	cat <<EOF > /etc/sysconfig/docker-storage-setup
-	DEVS=/dev/vdc
-	VG=docker-vg
-	EOD
-	systemctl stop docker
-	rm -rf /var/lib/docker/
-	docker-storage-setup
-fi
+
+cp /etc/sysconfig/docker-storage-setup /etc/sysconfig/docker-storage-setup.bk
+echo DEVS=/dev/vdc > /etc/sysconfig/docker-storage-setup
+echo VG=docker-vg >> /etc/sysconfig/docker-storage-setup
+systemctl stop docker
+rm -rf /var/lib/docker/
+docker-storage-setup
+
 systemctl restart docker
 systemctl enable docker
  
