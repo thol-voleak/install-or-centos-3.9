@@ -62,7 +62,7 @@ ansible-playbook -i inventory.ini openshift-ansible/playbooks/byo/config.yml
 htpasswd -b /etc/origin/master/htpasswd ${USERNAME} ${PASSWORD}
 oc adm policy add-cluster-role-to-user cluster-admin ${USERNAME}
 
-systemctl restart origin-master
+systemctl restart origin-master-api
 
 echo "******"
 echo "* Your conosle is https://console.$DOMAIN:8443"
