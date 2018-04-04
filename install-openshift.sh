@@ -55,17 +55,6 @@ EOD
 #systemctl restart docker
 #systemctl enable docker
  
-
-export METRICS="True"
-export LOGGING="False"
-memory=$(cat /proc/meminfo | grep MemTotal | sed "s/MemTotal:[ ]*\([0-9]*\) kB/\1/")
-if [ "$memory" -lt "4194304" ]; then
-	export METRICS="False"
-fi
-if [ "$memory" -lt "8000000" ]; then
-	export LOGGING="False"
-fi
-
 curl -o inventory.download $SCRIPT_REPO/inventory.ini
 envsubst < inventory.download > inventory.ini
 ansible-playbook -i inventory.ini openshift-ansible/playbooks/byo/config.yml
