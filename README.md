@@ -23,6 +23,6 @@
 
 7. Command installation  
 ```
-1- ansible-playbook -i inventory.ini openshift-ansible/playbooks/prerequisites.yml
-2- ansible-playbook -i inventory.ini openshift-ansible/playbooks/deploy_cluster.yml
+# Please check files install-openshift.sh & inventory.ini for more detail
+- ./install-openshift.sh
 ```
