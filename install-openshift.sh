@@ -1,14 +1,10 @@
 #!/bin/bash
-
-## see: https://www.youtube.com/watch?v=-OOnGK-XeVY
-
-echo "------------>1.process export variable------------>"
 export DOMAIN=master-ocp.truemoney.com.kh
 export USERNAME=admin
 export PASSWORD=admin@pwd
-export VERSION=${VERSION:="v3.7.0"}
+export VERSION=${VERSION:="v3.9.0"}
 
-export SCRIPT_REPO=${SCRIPT_REPO:="https://raw.githubusercontent.com/thol-voleak/openshift-origin-centos-installation/master"}
+export SCRIPT_REPO=${SCRIPT_REPO:="https://raw.githubusercontent.com/thol-voleak/install-or-centos-3.9/master/"}
 
 export IP="$(ip route get 8.8.8.8 | awk '{print $NF; exit}')"
 
@@ -19,13 +15,19 @@ echo "* Your password is $PASSWORD "
 echo "* OpenShift version: $VERSION "
 echo "******"
 
+yum install atomic -y
+yum install docker -y
 yum install -y epel-release
 yum install -y git wget zile nano net-tools docker-1.12.6 \
 python-cryptography pyOpenSSL.x86_64 python2-pip \
 openssl-devel python-devel httpd-tools NetworkManager python-passlib \
 java-1.8.0-openjdk-headless "@Development Tools" \
-bind-utils iptables-services bridge-utils bash-completion kexec-tools sos psacct \
-atomic
+bind-utils iptables-services bridge-utils bash-completion kexec-tools sos psacct 
+yum groupinstall -y file-server nfs-utils
+systemctl enable rpcbind
+systemctl enable nfs-server
+systemctl start rpcbind
+systemctl start nfs-server
 
 systemctl | grep "NetworkManager.*running" 
 if [ $? -eq 1 ]; then
@@ -33,27 +35,16 @@ if [ $? -eq 1 ]; then
 	systemctl enable NetworkManager
 fi
 
-which ansible || pip install -Iv ansible
-
+yum install -y ansible
 [ ! -d openshift-ansible ] && git clone https://github.com/openshift/openshift-ansible.git
-
-cd openshift-ansible && git fetch && git checkout release-3.7 && cd ..
+cd openshift-ansible && git fetch && git checkout release-3.9 && cd ..
 
 cat <<EOD > /etc/hosts
-127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4 
-::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
-${IP}		$(hostname) console console.${DOMAIN} 
+	127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4 
+	::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+	${IP}		$(hostname) console console.${DOMAIN} 
 EOD
 
-
-#cp /etc/sysconfig/docker-storage-setup /etc/sysconfig/docker-storage-setup.bk
-#echo DEVS=/dev/vdc > /etc/sysconfig/docker-storage-setup
-#echo VG=docker-vg >> /etc/sysconfig/docker-storage-setup
-#systemctl stop docker
-#rm -rf /var/lib/docker/
-#docker-storage-setup
-#systemctl restart docker
-#systemctl enable docker
  
 curl -o inventory.download $SCRIPT_REPO/inventory.ini
 envsubst < inventory.download > inventory.ini
