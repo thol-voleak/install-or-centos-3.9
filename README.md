@@ -24,5 +24,5 @@
 7. Command installation  
 ```
 # Please check files install-openshift.sh & inventory.ini for more detail
-- ./install-openshift.sh
+$ ./install-openshift.sh
 ```
