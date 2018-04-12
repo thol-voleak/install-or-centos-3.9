@@ -7,10 +7,10 @@
 
 ```
 # The PATH for the root user on each host must contain the following directories:
-- /bin
-- /sbin
-- /usr/bin
-- /usr/sbin
+ - /bin
+ - /sbin
+ - /usr/bin
+ - /usr/sbin
 ```
 
 3. Install Docker as explained in https://docs.openshift.org/3.9/install_config/install/host_preparation.html#installing-docker by openshift.org
@@ -24,5 +24,7 @@
 7. Command installation  
 ```
 # Please check files install-openshift.sh & inventory.ini for more detail
-$ ./install-openshift.sh
+1- change IP addr and domain name in install-openshift.sh & inventory.ini to your env
+2- Run 
+  $ ./install-openshift.sh
 ```
