@@ -1,42 +1,26 @@
-Install RedHat OpenShift Origin in your development box.
+#Install RedHat OpenShift Origin 3.9
 
 ## Installation
+1. Prerequisites as explained in https://docs.openshift.org/3.9/install_config/install/prerequisites.html by openshift.org
 
-1. Create a VM as explained in https://youtu.be/aqXSbDZggK4 (this video) by Grant Shipley
-
-2. Define mandatory variables for the installation process
-
-```
-# Domain name to access the cluster
-$ export DOMAIN=<public ip addres>.nip.io 
-
-# User created after installation
-$ export USERNAME=<current user name>
-
-# Password for the user
-$ export PASSWORD=password
-```
-
-3. Define optional variables for the installation process
+2. Setting PATH
 
 ```
-# Instead of using loopback, setup DeviceMapper on this disk.
-# !! All data on the disk will be wiped out !!
-$ export DISK="/dev/sda"
+# The PATH for the root user on each host must contain the following directories:
+		- /bin
+		- /sbin
+		- /usr/bin
+		- /usr/sbin
 ```
 
-3. Run the automagic installation script as root:
+3. Install Docker as explained in https://docs.openshift.org/3.9/install_config/install/host_preparation.html#installing-docker by openshift.org
 
+4. Configuring Docker Storage as explained in https://docs.openshift.org/3.9/install_config/install/host_preparation.html#configuring-docker-storage by openshift.org
+
+5. Ensuring Host Access as explained in https://docs.openshift.org/3.9/install_config/install/host_preparation.html#ensuring-host-access by openshift.org
+
+6. Configuring Ansible Inventory Files
 ```
-curl https://raw.githubusercontent.com/gshipley/installcentos/master/install-openshift.sh | /bin/bash
-```
-
-## Development
-
-For development it's possible to switch the script repo
-
-```
-# Change location of source repository
-$ export SCRIPT_REPO="https://raw.githubusercontent.com/gshipley/installcentos/master"
-$ curl $SCRIPT_REPO/install-openshift.sh | /bin/bash
+  - config in file -> inventory.ini
+  - more detail in https://docs.openshift.org/3.9/install_config/install/advanced_install.html#configuring-ansible
 ```
