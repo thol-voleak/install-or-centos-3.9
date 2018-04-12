@@ -24,9 +24,6 @@
 7. Command installation  
 ```
 # Please check files install-openshift.sh & inventory.ini for more detail
-
 1- Change IP addr and domain name in install-openshift.sh & inventory.ini to your env
-
-2- Run 
-  $ ./install-openshift.sh
+2- Run ./install-openshift.sh
 ```
