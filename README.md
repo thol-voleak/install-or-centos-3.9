@@ -1,6 +1,6 @@
 ### Install RedHat OpenShift Origin 3.9
 
-## Installation
+## Installation guideline
 1. Prerequisites as explained in https://docs.openshift.org/3.9/install_config/install/prerequisites.html by openshift.org
 
 2. Setting PATH
