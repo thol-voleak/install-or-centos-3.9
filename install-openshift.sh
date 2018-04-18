@@ -15,8 +15,6 @@ echo "* Your password is $PASSWORD "
 echo "* OpenShift version: $VERSION "
 echo "******"
 
-yum install atomic -y
-yum install docker -y
 yum install -y epel-release
 yum install -y git wget zile net-tools \
 python-cryptography pyOpenSSL.x86_64 python2-pip \
