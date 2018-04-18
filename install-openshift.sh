@@ -18,7 +18,7 @@ echo "******"
 yum install atomic -y
 yum install docker -y
 yum install -y epel-release
-yum install -y git wget zile nano net-tools docker-1.12.6 \
+yum install -y git wget zile net-tools \
 python-cryptography pyOpenSSL.x86_64 python2-pip \
 openssl-devel python-devel httpd-tools NetworkManager python-passlib \
 java-1.8.0-openjdk-headless "@Development Tools" \
