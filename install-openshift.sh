@@ -1,7 +1,7 @@
 #!/bin/bash
-export DOMAIN=master-ocp.truemoney.com.kh
+export DOMAIN=ocp-master-pro.tmn.local
 export USERNAME=admin
-export PASSWORD=admin@pwd
+export PASSWORD=admin@pwdprod
 export VERSION=${VERSION:="v3.9.0"}
 
 export SCRIPT_REPO=${SCRIPT_REPO:="https://raw.githubusercontent.com/thol-voleak/install-or-centos-3.9/master/"}
