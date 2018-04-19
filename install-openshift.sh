@@ -33,7 +33,7 @@ if [ $? -eq 1 ]; then
 	systemctl enable NetworkManager
 fi
 
-yum install -y ansible
+which ansible || pip install -Iv ansible
 [ ! -d openshift-ansible ] && git clone https://github.com/openshift/openshift-ansible.git
 cd openshift-ansible && git fetch && git checkout release-3.6 && cd ..
 
