@@ -43,20 +43,20 @@ cat <<EOD > /etc/hosts
 	${IP}		$(hostname) console console.${DOMAIN} 
 EOD
 
-if [ -z $DISK ]; then 
-	export DISK="/dev/sda"
-	cp /etc/sysconfig/docker-storage-setup /etc/sysconfig/docker-storage-setup.bk
-	echo DEVS=$DISK > /etc/sysconfig/docker-storage-setup
-	echo VG=DOCKER >> /etc/sysconfig/docker-storage-setup
-	echo SETUP_LVM_THIN_POOL=yes >> /etc/sysconfig/docker-storage-setup
-	echo DATA_SIZE="100%FREE" >> /etc/sysconfig/docker-storage-setup
+#if [ -z $DISK ]; then 
+#	export DISK="/dev/sda"
+#	cp /etc/sysconfig/docker-storage-setup /etc/sysconfig/docker-storage-setup.bk
+#	echo DEVS=$DISK > /etc/sysconfig/docker-storage-setup
+#	echo VG=DOCKER >> /etc/sysconfig/docker-storage-setup
+#	echo SETUP_LVM_THIN_POOL=yes >> /etc/sysconfig/docker-storage-setup
+#	echo DATA_SIZE="100%FREE" >> /etc/sysconfig/docker-storage-setup
 
-	systemctl stop docker
+#	systemctl stop docker
 
-	rm -rf /var/lib/docker
-	wipefs --force $DISK
-	docker-storage-setup
-fi
+#	rm -rf /var/lib/docker
+#	wipefs --force $DISK
+#	docker-storage-setup
+#fi
  
 curl -o inventory.download $SCRIPT_REPO/inventory.ini
 envsubst < inventory.download > inventory.ini
